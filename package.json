@@ -1,0 +1,25 @@
+{
+  "name": "get-advisories",
+  "version": "1.0.0",
+  "description": "Get GitHub Advisory URLs published for configured libraries in the last 24 hours",
+  "main": "src/advisories.js",
+  "bin": {
+    "get-advisories": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rchaser53/get-advisories.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rchaser53/get-advisories/issues"
+  },
+  "homepage": "https://github.com/rchaser53/get-advisories#readme"
+}

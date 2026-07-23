@@ -1,0 +1,6 @@
+{
+  "libraries": [
+    { "ecosystem": "npm", "name": "express" },
+    { "ecosystem": "pip", "name": "django" }
+  ]
+}
