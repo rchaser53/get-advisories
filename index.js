@@ -11,6 +11,11 @@ async function main() {
     token: process.env.GITHUB_TOKEN,
   });
 
+  if (urls.length === 0) {
+    console.log('該当する Advisory はありません。');
+    return;
+  }
+
   for (const url of urls) {
     console.log(url);
   }

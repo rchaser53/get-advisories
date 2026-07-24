@@ -39,4 +39,4 @@ node index.js path/to/config.json
 GITHUB_TOKEN=github_pat_xxx npm start
 ```
 
-該当する Advisory がない場合、何も出力せず正常終了します。
+該当する Advisory がない場合、`該当する Advisory はありません。` と出力して正常終了します。
