@@ -1,8 +1,20 @@
 #!/usr/bin/env node
 
 const path = require('node:path');
+const { appendFileSync } = require('node:fs');
 const { readFile } = require('node:fs/promises');
 const { getAdvisoryUrls } = require('./src/advisories');
+
+const logPath = path.resolve(process.env.LOG_FILE || 'get-advisories.log');
+
+function writeLog(message, method = 'log') {
+  console[method](message);
+  try {
+    appendFileSync(logPath, `${message}\n`, 'utf8');
+  } catch (error) {
+    console.error(`get-advisories: ログファイルに書き込めませんでした: ${error.message}`);
+  }
+}
 
 async function main() {
   const configPath = path.resolve(process.argv[2] || 'advisories.config.json');
@@ -12,16 +24,16 @@ async function main() {
   });
 
   if (urls.length === 0) {
-    console.log('該当する Advisory はありません。');
+    writeLog('該当する Advisory はありません。');
     return;
   }
 
   for (const url of urls) {
-    console.log(url);
+    writeLog(url);
   }
 }
 
 main().catch((error) => {
-  console.error(`get-advisories: ${error.message}`);
+  writeLog(`get-advisories: ${error.message}`, 'error');
   process.exitCode = 1;
 });
