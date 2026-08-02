@@ -1,6 +1,6 @@
 # get-advisories
 
-設定したライブラリについて、実行時点から過去24時間以内に公開された GitHub Advisory のURLを標準出力へ出力します。取り下げ済みの Advisory は除外します。
+設定したライブラリについて、実行時点から過去24時間以内に公開された GitHub Advisory のURLを標準出力とログファイルへ出力します。取り下げ済みの Advisory は除外します。
 
 ## 必要環境
 
@@ -40,3 +40,9 @@ GITHUB_TOKEN=github_pat_xxx npm start
 ```
 
 該当する Advisory がない場合、`該当する Advisory はありません。` と出力して正常終了します。
+
+ログはカレントディレクトリの `get-advisories.log` に、UTCのISO 8601 timestamp付きで追記されます。別のファイルを使用する場合は `LOG_FILE` を指定してください。
+
+```sh
+LOG_FILE=/path/to/get-advisories.log npm start
+```

@@ -8,9 +8,10 @@ const { getAdvisoryUrls } = require('./src/advisories');
 const logPath = path.resolve(process.env.LOG_FILE || 'get-advisories.log');
 
 function writeLog(message, method = 'log') {
-  console[method](message);
+  const timestampedMessage = `[${new Date().toISOString()}] ${message}`;
+  console[method](timestampedMessage);
   try {
-    appendFileSync(logPath, `${message}\n`, 'utf8');
+    appendFileSync(logPath, `${timestampedMessage}\n`, 'utf8');
   } catch (error) {
     console.error(`get-advisories: ログファイルに書き込めませんでした: ${error.message}`);
   }
